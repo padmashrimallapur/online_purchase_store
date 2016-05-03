@@ -1,28 +1,32 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: padmashri
- * Date: 2016-04-28
- * Time: 10:14 PM
- */
+ob_start();
 
 session_start();
-
-include("/mylibrary/login.php");
+include("../mylibrary/login.php");
 login();
 
-$userid = $_POST['userid'];
-$password = $_POST['password'];
+$userid = $_GET['userid'];
+$password = $_GET['password'];
 
-$query = "SELECT userid, name from admins where userid = '$userid' and password = PASSWORD('$password')";
-$result = mysql_query($query);
+$con = mysqli_connect("localhost", "root", "", "store") or die("could not connect to the database");
+if (mysqli_connect_errno())
+{
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
-if(mysql_num_rows($result)==0) {
+//$query = "SELECT userid, name from admins where userid = '$userid' and password = PASSWORD('$password')";
+
+//echo $query;
+$result = mysqli_query($con,"SELECT userid, name from admins where userid = '$userid' and password = md5('$password') ");
+
+if(mysqli_num_rows($result)==0) {
     echo "<h2>Sorry your account was not validated </h2><br>\h";
     echo "<a href=\"admin.php\"> try again </a><br>\n";
 }
 else{
 
     $_SESSION['store_admin'] = $userid;
-    header("Location : admin.php");
+    header("Location: admin.php");
+
 }
+?>

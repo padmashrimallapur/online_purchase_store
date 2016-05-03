@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -12,8 +10,10 @@ session_start();
     </head>
 <?php
 
-include ("/mylibrary/login.php");
+include ("../mylibrary/login.php");
+
 login();
+
 
 ?>
 
@@ -29,19 +29,24 @@ login();
         <td id="main" width="50%" valign="top">
             <?php
                 if(!isset($_REQUEST['content'])){
+
                     if(!isset($_SESSION['store_admin'])){
+                       
                         include ('adminlogin.html');
                     }
                     else{
+                        
                         include ("adminmain.inc.php");
                     }
                 }
                 else{
+                   
                     $content = $_REQUEST['content'];
                     $nextpage = $content.".inc.php";
                     include ($nextpage);
                 }
-?></td>
+?>
+        </td>
         <td id="status" width="30%" valign="top" >
             <?php include("adminstatus.inc.php"); ?></td>
         </tr>
@@ -53,9 +58,7 @@ login();
             </div>
         </td>
     </tr>
-
-        </td>
-        </tr>
+    
 </table>
 </body>
 </html>

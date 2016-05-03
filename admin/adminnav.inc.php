@@ -42,7 +42,7 @@
             echo "</form></td></tr>\n";
 
             echo "<tr><td><hr size=\"1\" noshade=\'noshade\'/></td></tr>\n";
-            echo "<tr><td bgcolor=\'#FFFF99'><a href=\"admin.php?content=newproduct\"><strong>Add a new product</strong></a></td></tr>\n";
+            echo "<tr><td bgcolor=\'#FFFF99\'><a href=\"admin.php?content=newproduct\"><strong>Add a new product</strong></a></td></tr>\n";
             echo "<tr><td><hr size=\"1\" noshade=\'noshade\'/></td></tr>\n";
             echo "<tr><td><a href=\"admin.php?content=newcat\"><strong>Add new Catagory</strong></a> </td>\n";
             echo "<tr><td><hr size=\"1\" noshade=\'noshade\'/></td></tr>\n";
